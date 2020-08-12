@@ -12,7 +12,7 @@
             link: function ($scope, element, attrs) {
                 // adds the tooltip to the body
                 $scope.createTooltip = function (event) {
-                    if (attrs.title || attrs.tooltip) {
+                    if (attrs.tooltip) {
                         var direction = $scope.getDirection();
 
                         // create the tooltip
@@ -22,7 +22,7 @@
                         angular.element(document).find('body').append($scope.tooltipElement);
 
                         // update the contents and position
-                        $scope.updateTooltip(attrs.title || attrs.tooltip);
+                        $scope.updateTooltip(attrs.tooltip);
 
                         // fade in
                         $scope.tooltipElement.addClass('angular-tooltip-fade-in');
@@ -139,7 +139,7 @@
                     return searchString.indexOf(findString) !== -1;
                 };
 
-                if (attrs.title || attrs.tooltip) {
+                if (attrs.tooltip) {
                     // attach events to show tooltip
                     element.on('mouseover', $scope.createTooltip);
                     element.on('mouseout', $scope.removeTooltip);
