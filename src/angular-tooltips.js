@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var directive = function ($timeout, $compile) {
+    var directive = function ($timeout, $compile, $sanitize) {
         return {
             restrict: 'A',
             scope: {
@@ -30,6 +30,7 @@
                 };
 
                 $scope.updateTooltip = function(title) {
+                    title = $sanitize(title);
                     // insert html into tooltip
                     $scope.tooltipElement.html(title);
 
@@ -155,7 +156,7 @@
         };
     };
 
-    directive.$inject = ['$timeout', '$compile'];
+    directive.$inject = ['$timeout', '$compile', '$sanitize'];
 
     angular
         .module('tooltips', [])
